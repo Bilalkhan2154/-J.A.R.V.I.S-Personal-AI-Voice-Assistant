@@ -1,11 +1,9 @@
 """
 ╔══════════════════════════════════════════════════════════╗
 ║          J.A.R.V.I.S  —  Personal AI Assistant          ║
-║    Just A Rather Very Intelligent System  v2.0           ║
+║                          System  v2.0           ║
 ╚══════════════════════════════════════════════════════════╝
 
-SETUP:  pip install -r requirements_jarvis.txt
-        Set your ANTHROPIC_API_KEY in the .env file or as an env var.
 """
 
 import os
@@ -34,14 +32,13 @@ load_dotenv()
 colorama_init(autoreset=True)
 
 ANTHROPIC_API_KEY = os.getenv("ANTHROPIC_API_KEY", "")
-WAKE_WORD        = "jarvis"          # Say "Jarvis" to wake the assistant
-VOICE_RATE       = 175               # Words per minute (150–200 is comfortable)
-VOICE_VOLUME     = 1.0               # 0.0 – 1.0
-VOICE_INDEX      = 0                 # 0 = first system voice; change if you prefer another
-LISTEN_TIMEOUT   = 8                 # Seconds to wait for speech
-PHRASE_LIMIT     = 15                # Max seconds of a single utterance
+WAKE_WORD        = "jarvis"          
+VOICE_RATE       = 175               
+VOICE_VOLUME     = 1.0               
+VOICE_INDEX      = 0                 
+LISTEN_TIMEOUT   = 8                 
+PHRASE_LIMIT     = 15               
 
-# Conversation memory (sent to Claude every turn)
 conversation_history: list[dict] = []
 
 SYSTEM_PROMPT = """
@@ -60,7 +57,6 @@ You have access to real-time capabilities (weather, time, system info, web)
 that are handled by separate functions — the user will tell you results when relevant.
 """
 
-# ─── Banner ──────────────────────────────────────────────────────────────────
 def print_banner():
     banner = f"""
 {Fore.CYAN}╔══════════════════════════════════════════════════════════════╗
@@ -141,7 +137,7 @@ class EarEngine:
             print(f"{Fore.RED}⚠  Google Speech error: {e}{Style.RESET_ALL}")
             return None
 
-# ─── AI Brain (Claude / Anthropic) ───────────────────────────────────────────
+# ─── AI Brain (Anthropic) ───────────────────────────────────────────
 class Brain:
     def __init__(self):
         if not ANTHROPIC_API_KEY:
@@ -307,7 +303,7 @@ class Skills:
     @staticmethod
     def get_news() -> str:
      try:
-        api_key = "12947e78de97475c8a714c530a6f4796"
+        api_key = "------------"
 
         url = f"https://newsapi.org/v2/top-headlines?country=us&apiKey={api_key}"
         r = requests.get(url, timeout=5)
