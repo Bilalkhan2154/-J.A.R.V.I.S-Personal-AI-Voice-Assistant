@@ -1,4 +1,4 @@
-🤖 J.A.R.V.I.S – Personal AI Voice Assistant 
+🤖 J.A.R.V.I.S – Personal AI Voice Assistant   
 
 J.A.R.V.I.S (Just A Rather Very Intelligent System) is a Python-based voice + text-controlled AI assistant inspired by Iron Man’s JARVIS. It combines speech recognition, text-to-speech, AI (Claude), and system automation to create a powerful desktop assistant that can understand and respond like a real intelligent companion.
 
